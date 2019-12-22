@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ylzInfo.mapping.MessageMapping">
+    <!--<resultMap id="BaseResultMap" type="com.ylzInfo.bean.FjAccessToken">-->
+        <!--<id column="ID" jdbcType="VARCHAR" property="id" />-->
+        <!--<result column="USERID" jdbcType="VARCHAR" property="userid" />-->
+        <!--<result column="EXPIRE_AT" jdbcType="TIMESTAMP" property="expireAt" />-->
+        <!--<result column="CAPTCHA_CODE" jdbcType="DECIMAL" property="capthcaCode" />-->
+        <!--<result column="CAPTCHA_CREATDATE" jdbcType="TIMESTAMP" property="capthcaCreatDate" />-->
+        <!--<result column="CAPTHA_COUNT" jdbcType="DECIMAL" property="capthaCount" />-->
+        <!--<result column="USERKEY" jdbcType="VARCHAR" property="userKey" />-->
+        <!--<result column="USERNAME" jdbcType="VARCHAR" property="userName" />-->
+        <!--<result column="PASSWORD" jdbcType="VARCHAR" property="passWord" />-->
+        <!--<result column="CODE_TYPE" jdbcType="VARCHAR" property="codeType" />-->
+    <!--</resultMap>-->
+
+    <select id="getMessageList" resultType="com.ylzInfo.bean.Message">
+        select * from lym.message
+    </select>
+    <!--<insert id="saveToken" parameterType="com.ylzInfo.bean.FjAccessToken">-->
+        <!--INSERT INTO FJSB_ACCESS_TOKEN (ID,USERID,EXPIRE_AT,USERKEY) VALUES (#{id,jdbcType=VARCHAR},#{userid,jdbcType=VARCHAR},#{expireAt,jdbcType=TIMESTAMP},#{userKey,jdbcType=VARCHAR})-->
+    <!--</insert>-->
+    <!--<delete id="delectByToken" parameterType="java.lang.String">-->
+        <!--DELETE FROM  FJSB_ACCESS_TOKEN WHERE ID = #{id}-->
+    <!--</delete>-->
+    <!--<update id="updataToken" parameterType="com.ylzInfo.bean.FjAccessToken">-->
+        <!--UPDATE FJSB_ACCESS_TOKEN-->
+        <!--<set>-->
+            <!--<if test="userid != null">-->
+                <!--USERID = #{userid,jdbcType=VARCHAR},-->
+            <!--</if>-->
+
+            <!--<if test="capthaCount != null">-->
+                <!--CAPTHA_COUNT = #{capthaCount,jdbcType=DECIMAL},-->
+            <!--</if>-->
+
+            <!--<if test="capthcaCode != null">-->
+                <!--CAPTCHA_CODE = #{capthcaCode,jdbcType=DECIMAL},-->
+            <!--</if>-->
+
+            <!--<if test="capthcaCreatDate != null">-->
+                <!--CAPTCHA_CREATDATE = #{capthcaCreatDate,jdbcType=TIMESTAMP},-->
+            <!--</if>-->
+
+            <!--<if test="expireAt != null">-->
+                <!--EXPIRE_AT = #{expireAt,jdbcType=TIMESTAMP},-->
+            <!--</if>-->
+            <!--<if test="passWord != null">-->
+                <!--PASSWORD = #{passWord,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test="userName != null">-->
+                <!--USERNAME = #{userName,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test="userKey != null">-->
+                <!--USERKEY = #{userKey,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test="codeType != null">-->
+                <!--CODE_TYPE = #{codeType,jdbcType=VARCHAR},-->
+            <!--</if>-->
+
+        <!--</set>-->
+        <!--WHERE ID = #{id,jdbcType=VARCHAR}-->
+    <!--</update>-->
+
+
+</mapper>

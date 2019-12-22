@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+
+        http://www.springframework.org/schema/context
+
+        http://www.springframework.org/schema/context/spring-context.xsd
+
+        http://www.springframework.org/schema/tx
+
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--引入mybati配置文件-->
+    <context:property-placeholder location="classpath:database.properties" />
+
+    <!--配置连接池及mysql-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driver" value="${mysql.database.driver}" />
+        <property name="url" value="${mysql.database.url}" />
+        <property name="username" value="${mysql.database.user}" />
+        <property name="password" value="${mysql.database.password}" />
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="1"></property>
+
+        <!-- 连接池最大数量 -->
+        <property name="maxActive" value="5"></property>
+
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle" value="5"></property>
+
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="1"></property>
+
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="6000"></property>
+    </bean>
+
+    <context:component-scan base-package="com.ylzInfo">
+        <!-- 扫描时跳过 @Controller 注解的JAVA类（控制器）。不然的话 -->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--指定数据源-->
+        <property name="dataSource" ref="dataSource" />
+        <!--指定对象的xml，里面有增删改查语句-->
+        <property name="configLocation" value="classpath:mappingConf.xml"> </property>
+    </bean>
+
+
+    <!--扫描mapping的所有文件并封装成bean并提供事务开关管理,，相当于以下的这个方法-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ylzInfo.mapping"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
