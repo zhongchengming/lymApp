@@ -2,13 +2,12 @@ package com.ylzInfo.util;
 
 
 import com.alibaba.fastjson.JSONObject;
+
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class HttpRequst {
     private  int  code;

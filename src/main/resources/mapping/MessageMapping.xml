@@ -15,7 +15,7 @@
     <!--</resultMap>-->
 
     <select id="getMessageList" resultType="com.ylzInfo.bean.Message">
-        select * from lym.message
+        select * from hym.message
     </select>
     <!--<insert id="saveToken" parameterType="com.ylzInfo.bean.FjAccessToken">-->
         <!--INSERT INTO FJSB_ACCESS_TOKEN (ID,USERID,EXPIRE_AT,USERKEY) VALUES (#{id,jdbcType=VARCHAR},#{userid,jdbcType=VARCHAR},#{expireAt,jdbcType=TIMESTAMP},#{userKey,jdbcType=VARCHAR})-->

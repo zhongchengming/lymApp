@@ -2,8 +2,6 @@ package com.ylzInfo.util;
 
 import com.alibaba.druid.filter.config.ConfigTools;
 
-import java.security.NoSuchAlgorithmException;
-
 public class YlzEncryptUtil {
 
 //	public static String encodePassword(String str) {
